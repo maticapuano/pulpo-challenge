@@ -1,9 +1,10 @@
 import { ICreateVehicle } from "../ICreateVehicle";
 import { IVehicle } from "../schema/IVehicle";
 import { UpdateVehicle } from "../UpdateVehicle";
+import { VehicleFilter } from "../VehicleFilter";
 
 export interface IVehiclesRepository {
-  findAll(): Promise<IVehicle[]>;
+  findAll(filter?: VehicleFilter): Promise<IVehicle[]>;
   findById(id: string): Promise<IVehicle | undefined>;
   create(vehicle: ICreateVehicle): Promise<IVehicle>;
   save(vehicle: UpdateVehicle): Promise<IVehicle>;

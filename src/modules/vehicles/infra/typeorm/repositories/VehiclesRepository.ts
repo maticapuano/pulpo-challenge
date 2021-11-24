@@ -1,8 +1,10 @@
 import { getRepository, Repository } from "typeorm";
+import { typeormFilterHelper } from "../../../../../shared/core/typeorm-filter";
 import { ICreateVehicle } from "../../../domain/ICreateVehicle";
 import { IVehiclesRepository } from "../../../domain/repositories/IVehiclesRepository";
 import { IVehicle } from "../../../domain/schema/IVehicle";
 import { UpdateVehicle } from "../../../domain/UpdateVehicle";
+import { VehicleFilter } from "../../../domain/VehicleFilter";
 import { VehicleEntity } from "../entities/Vehicle.entity";
 
 export class VehiclesRepository implements IVehiclesRepository {
@@ -12,10 +14,10 @@ export class VehiclesRepository implements IVehiclesRepository {
     this.ormRepository = getRepository(VehicleEntity);
   }
 
-  public async findAll(): Promise<IVehicle[]> {
-    const vehicles = await this.ormRepository.find();
+  public async findAll(filter?: VehicleFilter): Promise<IVehicle[]> {
+    const vehicles = await typeormFilterHelper(this.ormRepository, filter);
 
-    return vehicles;
+    return await vehicles;
   }
 
   public async findById(id: string): Promise<IVehicle | undefined> {

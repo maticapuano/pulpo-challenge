@@ -3,9 +3,9 @@ import { container } from "tsyringe";
 import { GetAllVehiclesUseCase } from "../../../useCases/GetAllVehiclesUseCase";
 
 export class GetAllVehiclesController {
-  public async handle(_req: Request, res: Response): Promise<Response> {
+  public async handle(req: Request, res: Response): Promise<Response> {
     const useCase = container.resolve(GetAllVehiclesUseCase);
-    const vehicles = await useCase.execute();
+    const vehicles = await useCase.execute(req.query);
 
     return res.json(vehicles);
   }
