@@ -26,7 +26,6 @@ export class UsersRepository implements IUsersRepository {
   public async findByEmail(email: string): Promise<IUser | undefined> {
     const user = await this.ormRepository.findOne({
       where: { email },
-      select: ["password"],
     });
 
     return user;
