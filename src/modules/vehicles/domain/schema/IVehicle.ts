@@ -1,6 +1,6 @@
 export enum VehicleStatus {
-  Active,
-  Inactive,
+  Active = "active",
+  Inactive = "inactive",
 }
 
 export interface IVehicle {
