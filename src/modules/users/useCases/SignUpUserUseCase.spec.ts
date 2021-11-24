@@ -2,6 +2,7 @@ import { FakeHashProvider } from "../../../shared/providers/HashProvider/fake/Fa
 import { UsersFakeRepository } from "../infra/typeorm/repositories/fake/UsersFakeRepository";
 import { SignUpUserUseCase } from "./SignUpUserUseCase";
 import { validate } from "uuid";
+import { BadRequestError } from "../../../shared/errors/BadRequestError";
 
 describe("SignUpUseCase", () => {
   const usersRepository = new UsersFakeRepository();
@@ -23,5 +24,19 @@ describe("SignUpUseCase", () => {
     expect(user.password).toBe("123456");
   });
 
-  //TODO: test if user already exists with the same email
+  it("should not be able to sign up with same email", async () => {
+    await signUpUseCase.execute({
+      full_name: "Mr Been",
+      email: "mr@been.com",
+      password: "123456",
+    });
+
+    await expect(
+      signUpUseCase.execute({
+        full_name: "Mr Been",
+        email: "mr@been.com",
+        password: "123456",
+      }),
+    ).rejects.toBeInstanceOf(BadRequestError);
+  });
 });
