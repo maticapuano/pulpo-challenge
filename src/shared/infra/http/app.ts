@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "../../providers/container";
 import express from "express";
 import { appConfig } from "../../../config/app.config";
 import { apiRoutes } from "./routes";

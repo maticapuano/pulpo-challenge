@@ -11,7 +11,9 @@ export class ConnectionFactory {
       password: options.DATABASE_PASSWORD,
       database: options.DATABASE_NAME,
       synchronize: true,
-      entities: [__dirname + "/../../../modules/**/infra/entities/*.{ts,js}"],
+      entities: [
+        __dirname + "/../../../modules/**/infra/typeorm/entities/*.{ts,js}",
+      ],
       logging: true,
     });
   }
