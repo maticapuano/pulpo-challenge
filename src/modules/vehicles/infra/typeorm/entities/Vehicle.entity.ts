@@ -24,6 +24,6 @@ export class VehicleEntity implements IVehicle {
   @Column()
   public status: VehicleStatus;
 
-  @Column()
+  @Column({ nullable: true })
   public assigned: boolean;
 }
