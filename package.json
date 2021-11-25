@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "ts-node -r dotenv/config src/shared/infra/http/server.ts",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "build": "tsc"
   },
   "dependencies": {
