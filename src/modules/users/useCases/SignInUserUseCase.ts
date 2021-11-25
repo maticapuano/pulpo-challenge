@@ -26,7 +26,6 @@ export class SignInUserUseCase implements UseCase<ISignInUser, IUserWithToken> {
     }
 
     const passwordMatched = await this._hashProvider.compare(password, existsEmail.password);
-
     if (!passwordMatched) {
       throw new BadRequestError(userConstants.EMAIL_OR_PASSWORD_INVALID);
     }
@@ -39,7 +38,11 @@ export class SignInUserUseCase implements UseCase<ISignInUser, IUserWithToken> {
     });
 
     const userWithToken: IUserWithToken = {
-      user: existsEmail,
+      user: {
+        id: user_id,
+        full_name,
+        email,
+      },
       access_token: accessToken,
     };
 
