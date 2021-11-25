@@ -1,4 +1,5 @@
 import { Like, Repository } from "typeorm";
+import { dateToString, isDate } from "./utils";
 
 export type ExpressQuery<T = any> = Record<keyof T, any>;
 
@@ -14,8 +15,12 @@ export const typeormFilterHelper = async <T = any>(
   if (query) {
     Object.keys(query).forEach((key) => {
       if (columns.includes(key)) {
-        // @ts-ignore
-        options.where[key] = Like(`%${query[key]}%`);
+        const value = (query as any)[key];
+        const isDateValue = isDate(value);
+        const transformValue = isDateValue ? dateToString(value) : Like(`%${value}%`);
+        console.log(`${key} = ${transformValue}`);
+
+        options.where[key] = transformValue;
       }
     });
   }
