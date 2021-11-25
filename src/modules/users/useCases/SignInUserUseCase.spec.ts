@@ -43,7 +43,11 @@ describe("SignInUserUseCase", () => {
       password: "123456",
     });
 
-    expect(response.user).toEqual(user);
+    expect(response.user).toHaveProperty("id");
+    expect(response.user.id).toBe(user.id);
+    expect(response.user.full_name).toBe(user.full_name);
+    expect(response.user.email).toBe(user.email);
+    expect(response.user).not.toHaveProperty("password");
     expect(response.access_token).toBe("some-token");
   });
 
