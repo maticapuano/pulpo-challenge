@@ -8,6 +8,8 @@
     "declaration": true,
     "sourceMap": false,
     "removeComments": false,
+    "rootDir": "./src",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -18,5 +20,7 @@
     "noUnusedParameters": true,
     "skipLibCheck": true,
     "typeRoots": ["./src/@types", "./node_modules/@types"]
-  }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./dist", "./src/**/*.spec.ts"]
 }

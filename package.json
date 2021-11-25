@@ -6,7 +6,8 @@
   "author": "Matías Capuano",
   "scripts": {
     "dev": "ts-node -r dotenv/config src/shared/infra/http/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

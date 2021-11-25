@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { yupValidationSchema } from "../../../../../shared/core/validation/yup-validation-schema";
 import { ICreateVehicle } from "../../../domain/ICreateVehicle";
-import { CreateVehicleUseCase } from "../../../useCases/DeleteVehicleByIdUseCase copy";
+import { CreateVehicleUseCase } from "../../../useCases/CreateVehicleUseCase";
 import { createVehicleValidation } from "../../../validation/create-vehicle-validation";
 
 export class CreateVehicleController {
