@@ -12,4 +12,5 @@ export interface IVehicle {
   date_ingress: Date;
   status: VehicleStatus;
   assigned: boolean;
+  news: string;
 }

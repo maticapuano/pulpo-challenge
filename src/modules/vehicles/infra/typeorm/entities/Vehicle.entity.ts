@@ -26,4 +26,7 @@ export class VehicleEntity implements IVehicle {
 
   @Column({ nullable: true })
   public assigned: boolean;
+
+  @Column({ nullable: true })
+  public news: string;
 }

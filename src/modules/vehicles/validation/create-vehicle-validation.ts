@@ -10,6 +10,7 @@ export const createVehicleValidation = yup
     color: yup.string().required(),
     date_ingress: yup.date().required(),
     assigned: yup.boolean().optional(),
+    news: yup.string().optional(),
     status: yup
       .mixed()
       .oneOf<VehicleStatus>(Object.values(VehicleStatus))

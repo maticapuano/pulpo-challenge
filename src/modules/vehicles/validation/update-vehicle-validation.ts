@@ -7,4 +7,6 @@ export const updateVehicleValidation = yup.object().shape({
   model: yup.string().optional(),
   color: yup.string().optional(),
   status: yup.mixed().oneOf<VehicleStatus>(Object.values(VehicleStatus)).optional(),
+  news: yup.string().optional(),
+  date_ingress: yup.date().optional(),
 });
